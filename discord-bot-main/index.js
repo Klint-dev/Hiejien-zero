@@ -11,6 +11,7 @@ const features = require("./features.js");
 const firms = require("./firms.js");
 const stockChart = require("./stockchart.js");
 const { tickFirmCandles } = require("./firmchart.js");
+const { startKeepAlive } = require("./keepalive.js");
 const chessCooldowns = new Map();
 const CHESS_COOLDOWN_MS = 30000;
 const gambleCooldowns = new Map();
@@ -5054,5 +5055,7 @@ async function init() {
 
   client.login(process.env.DISCORD_TOKEN);
 }
+
+startKeepAlive();
 
 init().catch(err => { console.error("Fatal startup error:", err.message); process.exit(1); });
